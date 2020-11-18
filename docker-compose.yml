@@ -1,0 +1,29 @@
+version: "3.5"
+services:
+  book-info:
+    build: ../BookInfo
+    container_name: book-info
+    ports:
+      - target: 8081
+        published: 8081
+    networks:
+      - book-net
+  book-rating:
+    build: ../BookRating
+    container_name: book-rating
+    ports:
+      - target: 8082
+        published: 8082
+    networks:
+      - book-net
+  book-catalog:
+    build: .
+    container_name: book-catalog
+    ports:
+      - target: 8083
+        published: 8083
+    networks:
+      - book-net
+
+networks:
+  book-net:

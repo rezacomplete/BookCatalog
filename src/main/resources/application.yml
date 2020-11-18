@@ -1,5 +1,5 @@
 server:
  port: 8083
 
-bookRatingUrl: http://localhost:8082/rating/
-bookInfoUrl: http://localhost:8081/books/
+bookRatingUrl: http://book-rating:8082/rating/
+bookInfoUrl: http://book-info:8081/books/
