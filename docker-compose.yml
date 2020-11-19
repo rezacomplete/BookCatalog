@@ -1,5 +1,19 @@
 version: "3.5"
 services:
+  db:
+    image: mysql
+    container_name: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_DATABASE: bookstore
+    ports:
+      - target: 3306
+        published: 3306
+    networks:
+      - book-net
+
   book-info:
     build: ../BookInfo
     container_name: book-info
@@ -8,6 +22,14 @@ services:
         published: 8081
     networks:
       - book-net
+    depends_on:
+      - db
+    environment:
+      - WAIT_HOSTS=mysql:3306
+      - WAIT_HOSTS_TIMEOUT=300
+      - WAIT_SLEEP_INTERVAL=30
+      - WAIT_HOST_CONNECT_TIMEOUT=30
+
   book-rating:
     build: ../BookRating
     container_name: book-rating
@@ -16,6 +38,7 @@ services:
         published: 8082
     networks:
       - book-net
+
   book-catalog:
     build: .
     container_name: book-catalog
@@ -24,6 +47,13 @@ services:
         published: 8083
     networks:
       - book-net
+
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
 
 networks:
   book-net:
