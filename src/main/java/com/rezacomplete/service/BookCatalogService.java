@@ -8,4 +8,6 @@ public interface BookCatalogService {
 
 
     List<CatalogInfo> retrieveBookCatalog(String userId);
+
+    void init();
 }
