@@ -62,7 +62,7 @@ public class BookCatalogServiceImpl implements BookCatalogService {
     public void init() {
         BookInfoRequest request = new BookInfoRequest();
         request.setId("1");
-        request.setName("Adventures");
+        request.setName("Reza Adventures");
 
         restTemplate.postForObject(addBookInfoUrl, request, String.class);
     }
