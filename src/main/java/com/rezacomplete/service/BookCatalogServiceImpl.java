@@ -23,9 +23,6 @@ public class BookCatalogServiceImpl implements BookCatalogService {
     @Value("${bookInfoUrl}")
     private String bookInfoUrl;
 
-    @Value("${addBookInfoUrl}")
-    private String addBookInfoUrl;
-
     @Autowired
     private RestTemplate restTemplate;
 
@@ -58,12 +55,4 @@ public class BookCatalogServiceImpl implements BookCatalogService {
         return catalogInfoList;
     }
 
-    @Override
-    public void init() {
-        BookInfoRequest request = new BookInfoRequest();
-        request.setId("1");
-        request.setName("Reza Adventures");
-
-        restTemplate.postForObject(addBookInfoUrl, request, String.class);
-    }
 }

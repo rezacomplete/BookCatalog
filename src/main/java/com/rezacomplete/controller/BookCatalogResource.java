@@ -22,9 +22,4 @@ public class BookCatalogResource {
         return bookCatalogService.retrieveBookCatalog(userId);
     }
 
-    @PostMapping(path="init")
-    public @ResponseBody String init() {
-        bookCatalogService.init();
-        return "Initiated!";
-    }
 }

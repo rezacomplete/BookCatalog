@@ -9,6 +9,12 @@ services:
       MYSQL_DATABASE: bookstore
     networks:
       - book-net
+    volumes:
+      - type: volume
+        source: book-vol
+        target: /code
+
+
   book-info:
     build: ../BookInfo
     ports:
@@ -18,6 +24,7 @@ services:
       - book-net
     depends_on:
       - db
+
   book-rating:
     build: ../BookRating
     container_name: book-rating
@@ -49,3 +56,6 @@ services:
 
 networks:
   book-net:
+
+volumes:
+  book-vol:

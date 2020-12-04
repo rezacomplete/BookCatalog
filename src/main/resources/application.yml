@@ -3,4 +3,3 @@ server:
 
 bookRatingUrl: http://book-rating:8082/rating/
 bookInfoUrl: http://book-info:8081/books/
-addBookInfoUrl: http://book-info:8081/add
